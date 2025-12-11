@@ -1,0 +1,5 @@
+{
+  "watch": ["server.ts", "clock.html", "clock.ts"],
+  "ext": "ts,html",
+  "exec": "vite build && tsc && node dist/server.js"
+}

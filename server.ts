@@ -3,6 +3,8 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
 import { z } from "zod";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 const server = new McpServer({
   name: "My First MCP App",
@@ -12,12 +14,17 @@ const server = new McpServer({
 const clockResourceUri = "ui://clock.html";
 
 server.registerResource(clockResourceUri, clockResourceUri, {}, async () => {
+  const html = await fs.readFile(
+    path.join(import.meta.dirname, "clock.html"),
+    "utf-8"
+  );
+
   return {
     contents: [
       {
         uri: clockResourceUri,
         mimeType: "text/html;profile=mcp-app",
-        text: `<h1>My First MCP App - Clock</h1>`,
+        text: html,
       },
     ],
   };
@@ -33,7 +40,7 @@ server.registerTool(
     _meta: { [RESOURCE_URI_META_KEY]: clockResourceUri },
   },
   async () => {
-    const time = new Date().toISOString();
+    const time = new Date().toISOString().split("T")[1].split(".")[0];
     return {
       content: [{ type: "text", text: time }],
       structuredContent: { time },

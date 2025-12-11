@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <script type="module" src="/clock.ts"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #1a1a2e;
+        font-family: "Courier New", monospace;
+      }
+
+      .clock {
+        background: #0f0f1a;
+        padding: 40px 60px;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+          inset 0 0 20px rgba(0, 0, 0, 0.3);
+        border: 1px solid #333;
+      }
+
+      .time {
+        font-size: 80px;
+        font-weight: bold;
+        color: #00ff88;
+        text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        letter-spacing: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="time" id="time"></div>
+    </div>
+
+    <script>
+      const hours = `00`;
+      const minutes = `00`;
+      const seconds = `00`;
+
+      document.getElementById(
+        "time"
+      ).textContent = `${hours}:${minutes}:${seconds}`;
+    </script>
+  </body>
+</html>
