@@ -1,0 +1,30 @@
+{
+  "name": "first-mcp-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunobuddy/first-mcp-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brunobuddy/first-mcp-app/issues"
+  },
+  "homepage": "https://github.com/brunobuddy/first-mcp-app#readme",
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "^0.0.7",
+    "@modelcontextprotocol/sdk": "^1.24.3",
+    "@types/express": "^5.0.6",
+    "express": "^5.2.1",
+    "zod": "^4.1.13"
+  }
+}
