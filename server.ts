@@ -1,6 +1,8 @@
+import { RESOURCE_URI_META_KEY } from "@modelcontextprotocol/ext-apps";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
+import { z } from "zod";
 
 const server = new McpServer({
   name: "My First MCP App",
@@ -20,6 +22,25 @@ server.registerResource(clockResourceUri, clockResourceUri, {}, async () => {
     ],
   };
 });
+
+server.registerTool(
+  "show-time",
+  {
+    title: "Show Current Time",
+    description: "Shows the current time.",
+    inputSchema: {},
+    outputSchema: { time: z.string() },
+    _meta: { [RESOURCE_URI_META_KEY]: clockResourceUri },
+  },
+  async () => {
+    const time = new Date().toISOString();
+    return {
+      content: [{ type: "text", text: time }],
+      structuredContent: { time },
+    };
+  }
+);
+
 const app = express();
 app.use(express.json());
 
