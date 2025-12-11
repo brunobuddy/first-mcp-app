@@ -7,6 +7,19 @@ const server = new McpServer({
   version: "0.0.1",
 });
 
+const clockResourceUri = "ui://clock.html";
+
+server.registerResource(clockResourceUri, clockResourceUri, {}, async () => {
+  return {
+    contents: [
+      {
+        uri: clockResourceUri,
+        mimeType: "text/html;profile=mcp-app",
+        text: `<h1>My First MCP App - Clock</h1>`,
+      },
+    ],
+  };
+});
 const app = express();
 app.use(express.json());
 
