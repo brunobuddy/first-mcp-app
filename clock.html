@@ -11,8 +11,8 @@
         padding: 0;
         box-sizing: border-box;
       }
-
-      html, body {
+      html,
+      body {
         height: 100%;
         overflow: hidden;
       }
@@ -32,6 +32,9 @@
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
           inset 0 0 20px rgba(0, 0, 0, 0.3);
         border: 1px solid #333;
+        display: flex;
+        align-items: center;
+        gap: 30px;
       }
 
       .time {
@@ -41,21 +44,62 @@
         text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
         letter-spacing: 4px;
       }
+
+      .refresh-btn {
+        background: #00ff88;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+      }
+
+      .refresh-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+      }
+
+      .refresh-btn:active {
+        transform: scale(0.95);
+      }
+
+      .refresh-btn svg {
+        width: 24px;
+        height: 24px;
+        fill: #0f0f1a;
+      }
     </style>
   </head>
   <body>
     <div class="clock">
       <div class="time" id="time"></div>
+      <button class="refresh-btn" id="refresh-button">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+          />
+        </svg>
+      </button>
     </div>
 
     <script>
-      const hours = `00`;
-      const minutes = `00`;
-      const seconds = `00`;
+      function updateTime() {
+        const now = new Date();
 
-      document.getElementById(
-        "time"
-      ).textContent = `${hours}:${minutes}:${seconds}`;
+        const hours = "00";
+        const minutes = "00";
+        const seconds = "00";
+        document.getElementById(
+          "time"
+        ).textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      updateTime();
     </script>
   </body>
 </html>
