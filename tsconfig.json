@@ -8,5 +8,10 @@
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["*.ts", "src/**/*.ts"]
+  "include": [
+    "*.ts",
+    "src/**/*.ts",
+    "resources/clock/clock.ts",
+    "tools/clock/clock.ts"
+  ]
 }

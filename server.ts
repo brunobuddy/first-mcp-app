@@ -1,52 +1,16 @@
-import { RESOURCE_URI_META_KEY } from "@modelcontextprotocol/ext-apps";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
-import { z } from "zod";
-import fs from "node:fs/promises";
-import path from "node:path";
+import { registerClockResource } from "./resources/clock/clock.js";
+import { registerShowTimeTool } from "./tools/show-time/show-time.js";
 
 const server = new McpServer({
   name: "My First MCP App",
   version: "0.0.1",
 });
 
-const clockResourceUri = "ui://clock.html";
-
-server.registerResource(clockResourceUri, clockResourceUri, {}, async () => {
-  const html = await fs.readFile(
-    path.join(import.meta.dirname, "clock.html"),
-    "utf-8"
-  );
-
-  return {
-    contents: [
-      {
-        uri: clockResourceUri,
-        mimeType: "text/html;profile=mcp-app",
-        text: html,
-      },
-    ],
-  };
-});
-
-server.registerTool(
-  "show-time",
-  {
-    title: "Show Current Time",
-    description: "Shows the current time.",
-    inputSchema: {},
-    outputSchema: { time: z.string() },
-    _meta: { [RESOURCE_URI_META_KEY]: clockResourceUri },
-  },
-  async () => {
-    const time = new Date().toISOString().split("T")[1].split(".")[0];
-    return {
-      content: [{ type: "text", text: time }],
-      structuredContent: { time },
-    };
-  }
-);
+registerClockResource(server);
+registerShowTimeTool(server);
 
 const app = express();
 app.use(express.json());
