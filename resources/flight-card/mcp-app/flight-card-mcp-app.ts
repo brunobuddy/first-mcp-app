@@ -1,5 +1,6 @@
 import { App, PostMessageTransport } from "@modelcontextprotocol/ext-apps";
 
+// Create a new MCP App instance.
 const app = new App({
   name: "Flight Card MCP App",
   version: "0.0.1",
@@ -7,6 +8,7 @@ const app = new App({
 
 const flightsEl = document.getElementById("flights")!;
 
+// Handle tool results to display flight information.
 app.ontoolresult = (result) => {
   const flights = result.structuredContent?.flights as {
     flightNumber: string;

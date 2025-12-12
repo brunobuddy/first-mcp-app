@@ -14,6 +14,8 @@ export function registerGetFlightsTool(server: McpServer) {
       _meta: { [RESOURCE_URI_META_KEY]: flightCardResourceUri },
     },
     async (input: { code: string }) => {
+      // Mock flight data for demonstration purposes. In a real implementation, you would fetch
+      // this data from an external API.
       const mockFlights = [
         { flightNumber: "AA100", airline: "American Airlines" },
         { flightNumber: "DL200", airline: "Delta Airlines" },

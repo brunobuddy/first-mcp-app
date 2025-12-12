@@ -9,9 +9,11 @@ const server = new McpServer({
   version: "0.0.1",
 });
 
+// Register tools and resources.
 registerGetFlightsTool(server);
 registerFlightCardResource(server);
 
+// Set up Express server to handle MCP requests.
 const app = express();
 app.use(express.json());
 
@@ -26,9 +28,10 @@ app.use("/mcp", async (req, res, next) => {
   });
 
   await server.connect(transport);
-
   await transport.handleRequest(req, res, req.body).catch(next);
 });
+
+// Start the server.
 app.listen(3000, () => {
   console.log("MCP server listening on http://localhost:3000/mcp");
 });
