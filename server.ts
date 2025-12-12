@@ -1,16 +1,11 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
-import { registerClockResource } from "./resources/clock/clock.js";
-import { registerShowTimeTool } from "./tools/show-time/show-time.js";
 
 const server = new McpServer({
   name: "My First MCP App",
   version: "0.0.1",
 });
-
-registerClockResource(server);
-registerShowTimeTool(server);
 
 const app = express();
 app.use(express.json());

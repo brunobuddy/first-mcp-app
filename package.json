@@ -1,14 +1,11 @@
 {
   "name": "first-mcp-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/server.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vite build && tsc",
-    "watch": "nodemon",
-    "start": "node dist/server.js"
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -21,18 +18,15 @@
     "url": "https://github.com/brunobuddy/first-mcp-app/issues"
   },
   "homepage": "https://github.com/brunobuddy/first-mcp-app#readme",
+  "description": "",
   "dependencies": {
-    "@modelcontextprotocol/ext-apps": "^0.0.7",
+    "@modelcontextprotocol/ext-apps": "^0.1.0",
     "@modelcontextprotocol/sdk": "^1.24.3",
     "express": "^5.2.1",
-    "vite": "^7.2.7",
-    "vite-plugin-singlefile": "^2.3.0",
     "zod": "^4.1.13"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/glob": "^8.1.0",
-    "glob": "^13.0.0",
     "nodemon": "^3.1.11"
   }
 }

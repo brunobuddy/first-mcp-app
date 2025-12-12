@@ -2,5 +2,5 @@
   "watch": ["."],
   "ext": "ts,html,css",
   "ignore": ["dist", "node_modules"],
-  "exec": "vite build && tsc && node dist/server.js"
+  "exec": "tsc && node dist/server.js"
 }
