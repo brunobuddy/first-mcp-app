@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./flight-card-mcp-app.ts"></script>
     <title>Flight Cards</title>
     <style>
       * {
@@ -66,30 +67,5 @@
   </head>
   <body>
     <div class="container" id="flights"></div>
-
-    <script>
-      const flights = [
-        { flightNumber: "UA 123", airline: "United Airlines" },
-        { flightNumber: "AA 456", airline: "American Airlines" },
-        { flightNumber: "DL 789", airline: "Delta Air Lines" },
-        { flightNumber: "SW 234", airline: "Southwest Airlines" },
-        { flightNumber: "BA 567", airline: "British Airways" },
-        { flightNumber: "LH 890", airline: "Lufthansa" },
-      ];
-
-      const container = document.getElementById("flights");
-
-      flights.forEach((flight) => {
-        container.innerHTML += `
-        <div class="card">
-          <div class="icon">✈️</div>
-          <div class="info">
-            <div class="flight-number">${flight.flightNumber}</div>
-            <div class="airline">${flight.airline}</div>
-          </div>
-        </div>
-      `;
-      });
-    </script>
   </body>
 </html>
