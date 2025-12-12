@@ -1,11 +1,14 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
+import { registerGetFlightsTool } from "./tools/get-flights.js";
 
 const server = new McpServer({
   name: "My First MCP App",
   version: "0.0.1",
 });
+
+registerGetFlightsTool(server);
 
 const app = express();
 app.use(express.json());
