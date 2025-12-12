@@ -1,5 +1,7 @@
+import { RESOURCE_URI_META_KEY } from "@modelcontextprotocol/ext-apps";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import z from "zod";
+import { flightCardResourceUri } from "../resources/flight-card/flight-card.js";
 
 export function registerGetFlightsTool(server: McpServer) {
   server.registerTool(
@@ -9,6 +11,7 @@ export function registerGetFlightsTool(server: McpServer) {
       inputSchema: {
         code: z.string().describe("The ICAO airport code, e.g. 'KJFK'"),
       },
+      _meta: { [RESOURCE_URI_META_KEY]: flightCardResourceUri },
     },
     async (input: { code: string }) => {
       const mockFlights = [
@@ -19,6 +22,7 @@ export function registerGetFlightsTool(server: McpServer) {
 
       return {
         content: [{ type: "text", text: JSON.stringify(mockFlights, null, 2) }],
+        structuredContent: { flights: mockFlights },
       };
     }
   );
